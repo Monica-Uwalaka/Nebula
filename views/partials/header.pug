@@ -1,39 +1,30 @@
-.navbar.navbar-light.fixed-top.navbar-expand-lg
-  .container
-    a.navbar-brand(href='/')
-      i.fas.fa-cube
-      | Project name
-    button.navbar-toggler(type='button', data-toggle='collapse', data-target='.navbar-collapse')
-      span.sr-only Toggle navigation
-      span.navbar-toggler-icon
-    .collapse.navbar-collapse
-      ul.nav.navbar-nav
-        li.nav-item(class=(title === 'Home') ? 'active' : undefined)
-          a.nav-link(href='/') Home
-        li.nav-item(class=(title === 'API Examples') ? 'active' : undefined)
-          a.nav-link(href='/api') API Examples
-        li.nav-item(class=(title === 'Contact') ? 'active' : undefined)
-          a.nav-link(href='/contact') Contact
-        li.nav-item(class=(title === 'Status') ? 'active' : undefined)
-          a.nav-link(href='/status') Status
-      ul.nav.navbar-nav.ml-auto
-        if !user
-          li.nav-item(class=(title === 'Login') ? 'active' : undefined)
-            a.nav-link(href='/login') Login
-          li.nav-item(class=(title === 'Create Account') ? 'active' : undefined)
-            a.nav-link(href='/signup') Create Account
-        else
-          li.dropdown(class=(title === 'Account Management') ? 'active' : undefined).nav-item
-            a.dropdown-toggle.nav-link(href='#', data-toggle='dropdown')
-              if user.profile.picture
-                img(src=user.profile.picture)
-              else
-                img(src=user.gravatar(60))
-              span= user.profile.name || user.email || user.id
-              i.caret
-            ul.dropdown-menu
-              li.dropdown-item
-                a(href='/account') My Account
-              li.divider.dropdown-item
-              li.dropdown-item
-                a(href='/logout') Logout
+header.c-navbar
+  a.c-navbar__brand(href='#!')
+    img(src='img/logo.png' alt="Dashboard's Logo")
+  // Navigation items that will be collapes and toggle in small viewports
+  nav#main-nav.c-nav.collapse
+  ul.c-nav__list
+    li.c-nav__item
+      .c-field.c-field--inline.has-icon-right(class='u-hidden-up@tablet')
+        span.c-field__icon
+          i.fa.fa-search
+        label.u-hidden-visually(for='navbar-search-small') Seach
+        input#navbar-search-small.c-input(type='text' placeholder='Search')
+    // // Navigation items
+    .c-field.has-icon-right.c-navbar__search.u-ml-auto.u-mr-small(class='u-hidden-down@tablet')
+      span.c-field__icon
+        i.fa.fa-search
+      label.u-hidden-visually(for='navbar-search') Search
+      input#navbar-search.c-input(type='text' placeholder='Search')
+    .c-dropdown.dropdown
+      a#dropdwonMenuAvatar.c-avatar.c-avatar--xsmall.has-dropdown.dropdown-toggle(href='#' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')
+        img.c-avatar__img(src='img/avatar-72.jpg' alt="User's Profile Picture")
+      .c-dropdown__menu.dropdown-menu.dropdown-menu-right(aria-labelledby='dropdwonMenuAvatar')
+         a.c-dropdown__item.dropdown-item(href='#') Edit Profile
+         a.c-dropdown__item.dropdown-item(href='#') View Activity
+         a.c-dropdown__item.dropdown-item(href='#') Manage Roles
+    button.c-nav-toggle(type='button' data-toggle='collapse' data-target='#main-nav')
+      span.c-nav-toggle__bar
+      span.c-nav-toggle__bar
+      span.c-nav-toggle__bar
+    // // .c-nav-toggle
